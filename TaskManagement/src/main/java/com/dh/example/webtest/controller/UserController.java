@@ -121,12 +121,12 @@ public class UserController {
 		try {
 			
 			
-//			User user=getUser();
-//			task.setUser(user);
+		/*User user=getUser();
+			task.setUser(user);*/
 
 			taskRepository.save(task);
-			TaskRepository.tasklist.add(task);
-			//taskRepository.save(task);
+			//TaskRepository.tasklist.add(task);
+
 			returnParams.put("status", true);
 		} catch (Exception e) {
 			e.printStackTrace();

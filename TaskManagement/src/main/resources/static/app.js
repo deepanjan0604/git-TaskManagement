@@ -1,4 +1,3 @@
-
 var app = angular.module('app', ['ngRoute']);
 
 
@@ -38,7 +37,31 @@ app.config(['$routeProvider',
                })
          }]);
 
+app.run(function($rootScope, $http){
+$rootScope.loadUsers = function(auth) {
+	if(auth)
+		{
+	
+	
+		var authData = auth.username + ':' + auth.password;
+	var encodedAuthData = btoa(authData);
+	headers = {
+			'Authorization' : 'Basic ' + encodedAuthData
+			}
+		} else {
+			headers : {};
+		}
 
+		$http({
+			method : 'GET',
+			url : '/users',     
+			headers : headers
+		}).then(function(response) {
+			$rootScope.users = response.data;
+			$rootScope.authenticated = true;
+	});
+	};
+});
 
 app.controller('usersctrl', [ '$scope','$rootScope','$http', function($scope,$rootScope, $http) {
 	
@@ -46,41 +69,32 @@ app.controller('usersctrl', [ '$scope','$rootScope','$http', function($scope,$ro
 	$scope.title = 'List of Users';
 	//$rootScope.users={};
 	$scope.auth = {};
-
-	$scope.loadUsers = function() {
-		
-		var authData = $scope.auth.username + ':' + $scope.auth.password;
-	var encodedAuthData = btoa(authData);
-
-		$http({
-			method : 'GET',
-			url : '/users',     
-			headers : {
-   					'Authorization' : 'Basic ' + encodedAuthData
-   					}
-		}).then(function(response) {
-			$rootScope.users = response.data;
-			$scope.authenticated = true;
-	});
-	};
+	$scope.login = function(){
+		$rootScope.loadUsers($scope.auth);
+	}
+	
+	
 } ]);
 
 
 app.controller('viewuserctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
+	//debugger;
+	$rootScope.loadUsers();
 	       $scope.index=$routeParams.userId;
 	       $scope.x=$rootScope.users[$routeParams.userId-1];
+
 	       
 	       // $scope.title = 'List of Comments';
-		   	$rootScope.tasks={};
+		   	/*$rootScope.tasks={};
 
 		   		$http({
 		   			method : 'GET',
 		   			url : '/tasks'
 		   		}).then(function(response) {
 		   			$rootScope.tasks = response.data;
-		   	});
+		   	});*/
 	   
 	     }]);
 
@@ -104,7 +118,7 @@ app.controller('addtaskctrl', [ '$scope', '$rootScope','$http', function($scope,
 			if(response.data.status){
 				alert('Task Added Successfully!');
 				$rootScope.tasks = {};
-				$rootScope.users.tasks.push($rootScope.tasks);
+				$rootScope.loadUsers();
 			} else {
 				alert('Task Addition Failed!');
 			}
@@ -113,7 +127,7 @@ app.controller('addtaskctrl', [ '$scope', '$rootScope','$http', function($scope,
 
 } ]);
 
-/*
+
 app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$http){
 	//$rootScope.q=[];
 	$scope.title="Edit task!!"
@@ -130,12 +144,10 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 					 
 				 }
 		 };$scope.auth = {};
-
 			$scope.saveTask = function(){	
 				
 //				var authData = $scope.auth.username + ':' + $scope.auth.password;
 //				var encodedAuthData = btoa(authData);
-
 		 $http({
 				method: 'POST',
 				url : '/edittask',
@@ -156,13 +168,6 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 			});
 			};
   });
-
-
-
-
-
-
-
 app.controller('addcommentctrl',[ '$scope', '$rootScope','$http',function($scope,$rootScope,$http){
 	$scope.title = 'Add new Comment!';
 	$scope.inputcomment={
@@ -187,19 +192,14 @@ app.controller('addcommentctrl',[ '$scope', '$rootScope','$http',function($scope
 			}
 		});
 	};
-
 }]);
-
-
-
-
 app.controller('viewcommentctrl',[ '$scope','$route','$routeParams','$rootScope',
 	     function($scope,$route,$routeParams,$rootScope)
 	     {
 	       $scope.index=$routeParams.taskId;
 	       $scope.x=$rootScope.tasks[$routeParams.taskId-1];
 	     
-	     }]);*/
+	     }]);
 
 
 
@@ -300,10 +300,5 @@ $scope.handleSubmit = function() {
 			}
 		});
 	};
-
 	     });*/
-
-
-
-
-
+//$rootScope.users.push($rootScope.tasks);

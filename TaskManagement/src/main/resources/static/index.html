@@ -1,4 +1,4 @@
-<body ng-controller="usersctrl" >
+<body ng-controller="usersctrl" ng-app="app">
 
 	<div ><br /><br />
 		<h1>{{title}}</h1>
@@ -14,7 +14,7 @@
 				<tr ng-repeat="user in users">
 					<td>{{user.userId}}</td>
 					<td>{{user.uName}}</td>
-					<td><a href=#view/{{user.userId}}>View</a></td>
+					<td><a href=#view/{{user.userId}}>View Tasks</a></td>
 				</tr>
 			</tbody>
 		</table>
