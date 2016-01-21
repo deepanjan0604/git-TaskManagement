@@ -121,8 +121,8 @@ public class UserController {
 		try {
 			
 			
-			User user=getUser();
-			task.setUser(user);
+//			User user=getUser();
+//			task.setUser(user);
 
 			taskRepository.save(task);
 			TaskRepository.tasklist.add(task);

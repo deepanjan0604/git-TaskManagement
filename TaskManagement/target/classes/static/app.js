@@ -103,7 +103,7 @@ app.controller('addtaskctrl', [ '$scope', '$rootScope','$http', function($scope,
 		}).then(function(response){
 			if(response.data.status){
 				alert('Task Added Successfully!');
-				$rootScope.tasks = {};
+				//$rootScope.tasks = {};
 				$rootScope.users.push($rootScope.tasks);
 			} else {
 				alert('Task Addition Failed!');
@@ -133,22 +133,22 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 
 			$scope.saveTask = function(){	
 				
-				var authData = $scope.auth.username + ':' + $scope.auth.password;
-				var encodedAuthData = btoa(authData);
+//				var authData = $scope.auth.username + ':' + $scope.auth.password;
+//				var encodedAuthData = btoa(authData);
 
 		 $http({
 				method: 'POST',
 				url : '/edittask',
 				data : $rootScope.a,
-				headers : {
-   					'Authorization' : 'Basic ' + encodedAuthData
-   					}
-				
+//				headers : {
+//   					'Authorization' : 'Basic ' + encodedAuthData
+//   					}
+//				
 			}).then(function(response){
 				if(response.data.status){
 					alert('task edit Successfully!');
 					$rootScope.a= {};
-					$rootScope.tasks.push($rootScope.a);
+					//$rootScope.tasks.push($rootScope.a);
 				//	$scope.edited = true;
 				} else {
 					alert('task edit Failed!');
@@ -156,6 +156,57 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 			});
 			};
   });
+
+
+
+
+
+
+
+app.controller('addcommentctrl',[ '$scope', '$rootScope','$http',function($scope,$rootScope,$http){
+	$scope.title = 'Add new Comment!';
+	$scope.inputcomment={
+			task:{
+					}
+		};
+	
+	$scope.saveComments = function(){
+		//Validation
+		
+		$http({
+			method: 'POST',
+			url : '/savecomment',
+			data : $scope.inputcomment
+		}).then(function(response){
+			if(response.data.status){
+				alert('Comment Added Successfully!');
+				$rootScope.comments = {};
+				//$rootScope.tasks.push($rootScope.comments);
+			} else {
+				alert('Comment Addition Failed!');
+			}
+		});
+	};
+
+}]);
+
+
+
+
+app.controller('viewcommentctrl',[ '$scope','$route','$routeParams','$rootScope',
+	     function($scope,$route,$routeParams,$rootScope)
+	     {
+	       $scope.index=$routeParams.taskId;
+	       $scope.x=$rootScope.tasks[$routeParams.taskId-1];
+	     
+	     }]);
+
+
+
+
+
+
+
 
 
 /*app.controller('reassignctrl',
@@ -229,46 +280,3 @@ $scope.handleSubmit = function() {
 
 
 
-
-
-
-
-
-
-app.controller('addcommentctrl',[ '$scope', '$rootScope','$http',function($scope,$rootScope,$http){
-	$scope.title = 'Add new Comment!';
-	$scope.inputcomment={
-			task:{
-					}
-		};
-	
-	$scope.saveComments = function(){
-		//Validation
-		
-		$http({
-			method: 'POST',
-			url : '/savecomment',
-			data : $scope.inputcomment
-		}).then(function(response){
-			if(response.data.status){
-				alert('Comment Added Successfully!');
-				$rootScope.comments = {};
-				//$rootScope.tasks.push($rootScope.comments);
-			} else {
-				alert('Comment Addition Failed!');
-			}
-		});
-	};
-
-}]);
-
-
-
-
-app.controller('viewcommentctrl',[ '$scope','$route','$routeParams','$rootScope',
-	     function($scope,$route,$routeParams,$rootScope)
-	     {
-	       $scope.index=$routeParams.taskId;
-	       $scope.x=$rootScope.tasks[$routeParams.taskId];
-	     
-	     }]);
