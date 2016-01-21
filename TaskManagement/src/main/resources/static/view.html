@@ -1,0 +1,45 @@
+
+<body ng-controller="viewuserctrl">
+<br /><br />
+<table class="table table-striped">
+<br><br>
+      <tr>
+        <th>User ID:</th>
+		<td>{{x.userId}}</td>
+                </tr>
+     <tr>   <th>User name</th>
+		 <td>{{x.uName}}</td></tr>
+		 
+		 
+      <th>Tasks</th>
+     
+	 
+    <td >
+    
+    <table class="table table-striped ">
+			<thead>
+				<tr>
+					<th>TaskID</th>
+					<th>Title</th>
+					<th>Message</th>
+					<th>Status</th>
+	
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="y in x.tasks">
+					<td>{{y.taskId}}</td>
+					<td>{{y.title}}</td>
+					<td>{{y.msg}}</td>
+					<td>{{y.status}}</td>
+					<td><a href=#viewcomment/{{$index}}>View Comments</a></td>
+					<td ><a href=#edit/{{y.taskId}} >Edit/Reassign</a></td>
+					<td><a href=#comment>Comment</a></td>
+					<td><a href=#history/{{$index}}>History</a></td>				
+			</tbody>
+		</table> 
+    </td>
+    </tr>
+  </table>
+</body>
+<!-- ng-click="getTask(task)" ng-show="edited" -->

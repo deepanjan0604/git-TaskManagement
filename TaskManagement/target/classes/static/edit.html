@@ -1,0 +1,45 @@
+
+<body>
+<div ng-controller="edittaskctrl">
+<div class="row">
+<div class="container">
+<div class="col-md-8">
+ <div class="col-md-offset-4">
+		<h1>{{title}}</h1>
+		
+		<form ng-submit="saveTask()">
+		<br>
+		
+			Title: <input type="text" id="ipTitle" class="form-control" name="q.title"  value="q.title"
+				ng-model="a.title"/><br /> 
+				<br>
+			Message: <textarea rows="3" cols="50"  type="text" id="ipMessage" class="form-control" 
+			ng-model="a.msg"></textarea><br />			
+			Status: <select id="ipStatus"  class="form-control" ng-model="a.status" >
+  					<option value="Complete">Complete</option>
+  					<option value="Incomplete">Incomplete</option>
+  					</select> <br>
+				<br>	
+		        <br>
+		        
+		       <!--  UserId:<input type="text" id="ipUserId" class="form-control" ng-model="x.userId">	
+				<select class="form-control" ng-model="q.user.userId">
+				<option  ng-repeat="user in users"  value="{{user.userId}}">{{user.userId}}
+				</option>
+				</select>
+				<br />
+				<br /> -->
+				
+				
+				<h1>Reassign</h1>
+				User Id(Assignee): <input type="number" id="ipuserid" class="form-control"
+				ng-model="a.user.userId"/><br />  
+				<br>
+				<button class="btn btn-primary" type="submit" ng-click="saveTask()">Save Task</button>
+				</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</body>

@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+<script src="app.js"></script>
+ <link rel="stylesheet" >
+ <style>body {
+    background-color: white;
+}
+ </style>
+  
+		</head>
+		<body ng-app="app">
+			<div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand">Task Management</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ><a href="#home">View task<span class="sr-only"></span></a></li>
+        <li><a href="#add">Add new task</a></li>
+      </ul>
+     
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</div>
+			 
+			 <section >
+<div class="container" ng-hide="authenticated">
+	<div ng-controller="usersctrl" >
+	
+	<div class="login-box"  >
+	<br><br><br>
+    <form class="email-login"  ng-hide="authenticated">
+      <div class="u-form-group">
+       Username: <input type="text" class="form-control" placeholder="username" ng-model="auth.username"/>
+      </div>
+      <div class="u-form-group">
+       Password: <input type="password" class="form-control" placeholder="Password" ng-model="auth.password" />
+      </div>
+      <div class="u-form-group">
+        <button ng-click="loadUsers()">Log in</button>
+      </div>
+    </form>
+    </div>
+    </div>
+  </div>      <div ng-view></div>  
+	</section>	
+ 
+			</body>
+	</html>

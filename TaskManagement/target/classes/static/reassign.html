@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-controller="reassignctrl">
+<div class="row">
+<div class="container">
+<div class="col-md-8">
+ <div class="col-md-offset-4">
+<h1>{{title}}</h1>
+UserId:<!-- <input type="text" id="ipUserId" class="form-control" ng-model="x.userId">	 -->
+<select>
+<option  ng-repeat="user in users"  value="{{user.userId}}">{{user.userId}}
+</option>
+</select>
+<br />
+<br />
+<button class="btn btn-primary" type="submit" ng-click="handleSubmit()">Reaasign Tasks</button>
+</div>
+</div>
+</div>
+</div>
+</body>
+
+</html>

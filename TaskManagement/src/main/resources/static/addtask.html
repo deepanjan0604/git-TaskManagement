@@ -1,0 +1,44 @@
+
+<body>
+<div ng-controller="addtaskctrl">
+<div class="row">
+<div class="container">
+<div class="col-md-8">
+ <div class="col-md-offset-4">
+ <br>
+ <br>
+		<h1>{{title}}</h1>
+		<form>
+		<br>
+		 
+				<br>
+			Title: <input type="text" id="ipTitle" class="form-control"
+				ng-model="inputtask.title"/><br /> 
+				<br>
+			Message: <input type="text" id="ipMessage" class="form-control" 
+			ng-model="inputtask.msg"/><br />
+			
+				<br>
+			
+			Status: <select id="ipStatus"  class="form-control" ng-model="inputtask.status" >
+  					<option value="Active">Active</option>
+  					<option value="Paused">Paused</option>
+  					<option value="Completed">Complete</option>
+  					</select> <br>
+  					
+	<!-- 	User Id(Assignee): <select id="ipuserId"  class="form-control" ng-model="inputtask.user.userId" 
+		>
+  					<option ng-repeat="y in inputtask.user" value="{{y.userId}}">{{y.userId}}</option>
+  					</select> <br>   -->
+  					
+  				User Id(Assignee): <input type="number" id="ipuserid" class="form-control"
+				ng-model="inputtask.user.userId"/><br />  
+				<br>
+				<button class="btn btn-primary" type="submit" ng-click="saveTasks()">Save Tasks</button>
+				</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</body>

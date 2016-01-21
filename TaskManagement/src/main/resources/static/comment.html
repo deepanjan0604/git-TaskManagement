@@ -1,0 +1,33 @@
+
+<body>
+<div ng-controller="addcommentctrl">
+<div class="row">
+<div class="container">
+<div class="col-md-8">
+ <div class="col-md-offset-4">
+ <br>
+ <br>
+		<h1>{{title}}</h1>
+		<form>
+		<br>
+		 
+				<br>
+			User name: <input type="text" id="ipuName" class="form-control"
+				ng-model="inputcomment.uName"/><br /> 
+				<br>
+			Comment: <input type="text" id="ipComment" class="form-control" 
+			ng-model="inputcomment.comment"/><br />
+			
+				<br>
+  					
+  					Task Id: <input type="number" id="iptaskid" class="form-control"
+				ng-model="inputcomment.task.taskId" /><br /> 
+				<br>
+				<button class="btn btn-primary" type="submit" ng-click="saveComments()">Save Comment</button>
+				</form>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+</body>
