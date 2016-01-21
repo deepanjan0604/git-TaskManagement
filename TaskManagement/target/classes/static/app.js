@@ -103,8 +103,8 @@ app.controller('addtaskctrl', [ '$scope', '$rootScope','$http', function($scope,
 		}).then(function(response){
 			if(response.data.status){
 				alert('Task Added Successfully!');
-				//$rootScope.tasks = {};
-				$rootScope.users.push($rootScope.tasks);
+				$rootScope.tasks = {};
+				$rootScope.users.tasks.push($rootScope.tasks);
 			} else {
 				alert('Task Addition Failed!');
 			}
@@ -113,7 +113,7 @@ app.controller('addtaskctrl', [ '$scope', '$rootScope','$http', function($scope,
 
 } ]);
 
-
+/*
 app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$http){
 	//$rootScope.q=[];
 	$scope.title="Edit task!!"
@@ -125,11 +125,11 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 				$rootScope.a = angular.copy(response.data);
 				 
 			});
-		 /*$rootScope.q={
+		 $rootScope.q={
 				 users:{
 					 
 				 }
-		 };*/$scope.auth = {};
+		 };$scope.auth = {};
 
 			$scope.saveTask = function(){	
 				
@@ -199,7 +199,34 @@ app.controller('viewcommentctrl',[ '$scope','$route','$routeParams','$rootScope'
 	       $scope.index=$routeParams.taskId;
 	       $scope.x=$rootScope.tasks[$routeParams.taskId-1];
 	     
-	     }]);
+	     }]);*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
