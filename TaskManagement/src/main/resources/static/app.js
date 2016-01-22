@@ -41,8 +41,6 @@ app.run(function($rootScope, $http){
 $rootScope.loadUsers = function(auth) {
 	if(auth)
 		{
-	
-	
 		var authData = auth.username + ':' + auth.password;
 	var encodedAuthData = btoa(authData);
 	headers = {
@@ -51,7 +49,6 @@ $rootScope.loadUsers = function(auth) {
 		} else {
 			headers : {};
 		}
-
 		$http({
 			method : 'GET',
 			url : '/users',     
@@ -72,8 +69,7 @@ app.controller('usersctrl', [ '$scope','$rootScope','$http', function($scope,$ro
 	$scope.login = function(){
 		$rootScope.loadUsers($scope.auth);
 	}
-	
-	
+
 } ]);
 
 
