@@ -87,14 +87,14 @@ app.controller('viewuserctrl',[ '$scope','$route','$routeParams', '$rootScope','
 
 	       
 	       // $scope.title = 'List of Comments';
-		   	/*$rootScope.tasks={};
+		   	$rootScope.tasks={};
 
 		   		$http({
 		   			method : 'GET',
 		   			url : '/tasks'
 		   		}).then(function(response) {
 		   			$rootScope.tasks = response.data;
-		   	});*/
+		   	});
 	   
 	     }]);
 
