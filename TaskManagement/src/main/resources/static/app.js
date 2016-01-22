@@ -35,6 +35,10 @@ app.config(['$routeProvider',
                  templateUrl: 'edit.html',
                  controller: 'edittaskctrl'
                })
+               .when('/history', {
+                 templateUrl: 'history.html',
+                 controller: 'viewhistoryctrl'
+               })
          }]);
 
 app.run(function($rootScope, $http){
@@ -199,7 +203,17 @@ app.controller('viewcommentctrl',[ '$scope','$route','$routeParams','$rootScope'
 
 
 
-
+app.controller('viewhistoryctrl',[ '$scope','$route','$routeParams','$rootScope',
+              function($scope,$route,$routeParams,$rootScope)
+                        	     {
+	
+	
+	
+	
+	
+	
+	
+                        	     }]);
 
 
 

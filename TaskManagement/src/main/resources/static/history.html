@@ -4,7 +4,46 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body ng-controller="viewhistoryctrl">
+
+
+<br /><br />
+<table class="table table-striped">
+<br><br>
+      <tr>
+        <th>Task ID:</th>
+		<td>{{x.taskId}}</td>
+                </tr>
+     <tr>   <th>Title</th>
+		 <td>{{x.title}}</td></tr>
+		 
+		 
+      <th>Tasks</th>
+     
+	 
+    <td >
+    
+    <table class="table table-striped ">
+			<thead>
+				<tr>
+					
+					<th>Username</th>
+					<th>UserId</th>
+	
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="y in x.tasks">
+					<td>{{y.userId}}</td>
+					<td>{{y.userName}}</td>
+							
+			</tbody>
+		</table> 
+    </td>
+    </tr>
+  </table>
+  
+  
 
 </body>
 </html>
