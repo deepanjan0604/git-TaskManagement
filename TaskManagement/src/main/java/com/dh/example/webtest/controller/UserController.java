@@ -17,6 +17,7 @@ import com.dh.example.webtest.model.History;
 import com.dh.example.webtest.model.Task;
 import com.dh.example.webtest.model.User;
 import com.dh.example.webtest.repositories.CommentRepository;
+import com.dh.example.webtest.repositories.HistoryRepository;
 import com.dh.example.webtest.repositories.TaskRepository;
 import com.dh.example.webtest.repositories.UserRepository;
 
@@ -30,6 +31,8 @@ public class UserController {
 	TaskRepository taskRepository;
 	@Autowired
 	CommentRepository commentRepository;
+	@Autowired
+	HistoryRepository historyRepository;
 	
 	
 	@RequestMapping("/users")
@@ -47,6 +50,11 @@ public class UserController {
 	public List<Comment> getComments() {
 		return (List<Comment>) commentRepository.findAll();
 	}
+	
+	@RequestMapping("/history")
+	public List<History> getHistories() {
+		return (List<History>) historyRepository.findAll();
+	}
 
 	@RequestMapping("/users/{userId}")
 	public User getUsers(@PathVariable("userId") int userId) {
@@ -60,7 +68,10 @@ public class UserController {
 	public Comment getComments(@PathVariable("commentId") int commentId) {
 		return  commentRepository.findOne(commentId);
 	}
-
+	@RequestMapping("/history/{id}")
+	public History getHistories(@PathVariable("id") int id) {
+		return  historyRepository.findOne(id);
+	}
 	
 	
 /*	@RequestMapping("/saveuser")

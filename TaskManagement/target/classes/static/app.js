@@ -35,7 +35,7 @@ app.config(['$routeProvider',
                  templateUrl: 'edit.html',
                  controller: 'edittaskctrl'
                })
-               .when('/history', {
+               .when('/history/:taskId', {
                  templateUrl: 'history.html',
                  controller: 'viewhistoryctrl'
                })
@@ -139,7 +139,7 @@ app.controller('edittaskctrl',function($scope,$route,$routeParams,$rootScope,$ht
 				$rootScope.a = angular.copy(response.data);
 				 
 			});
-		 $rootScope.q={
+		 $rootScope.a={
 				 users:{
 					 
 				 }
@@ -208,8 +208,18 @@ app.controller('viewhistoryctrl',[ '$scope','$route','$routeParams','$rootScope'
                         	     {
 	
 	
-	
-	
+	$scope.title="History!!"
+		 /*$http({
+				method : 'GET',
+				url : '/history',
+				
+			}).then(function(response) {
+				$rootScope.history = angular.copy(response.data);
+				 
+			});*/
+		$rootScope.loadUsers();
+	$scope.index=$routeParams.taskId;
+    $scope.x=$rootScope.tasks[$routeParams.taskId-1];
 	
 	
 	
