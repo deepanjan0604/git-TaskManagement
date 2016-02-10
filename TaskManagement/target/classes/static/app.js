@@ -76,7 +76,7 @@ app.controller('usersctrl', [ '$scope','$rootScope','$http', function($scope,$ro
 
 } ]);
 
-
+debugger;
 app.controller('viewuserctrl',[ '$scope','$route','$routeParams', '$rootScope','$http',
 	     function($scope,$route,$routeParams,$rootScope, $http)
 	     {
