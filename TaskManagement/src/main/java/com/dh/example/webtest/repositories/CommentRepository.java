@@ -8,4 +8,3 @@ import com.dh.example.webtest.model.Comment;
 public interface CommentRepository extends JpaRepository<Comment, Integer>{
 
 }
-
